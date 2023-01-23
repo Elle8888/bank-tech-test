@@ -15,8 +15,9 @@ const printBankStatements = () => {
     });
 }
 
-const deposit = () => {
-
+deposit = (amount) => {
+  this.balance += amount;
+  this.transactions.push({date: new Date(), credit: null, debit: amount});
 }
 
 const withdrawal = () => {
