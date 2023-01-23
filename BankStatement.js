@@ -1,5 +1,9 @@
-let balance = 0;
-let transaction = [];
+class BankAccount {
+  constructor() {
+    let balance = 0;
+    let transaction = [];
+  }
+}
 
 const printBankStatements = () => {
   let currentBalance = balance;
