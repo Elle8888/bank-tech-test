@@ -20,8 +20,9 @@ deposit = (amount) => {
   this.transactions.push({date: new Date(), credit: null, debit: amount});
 }
 
-const withdrawal = () => {
-
+withdrawal = (amount) => {
+  this.balance -= amount;
+  this.transactions.push({date: new Date(), credit: null, debit: amount});
 }
 
 module.exports = printBankStatements
