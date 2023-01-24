@@ -24,13 +24,13 @@ describe("BankAccount", () => {
     spy.mockRestore();
   })
 
-  it('deposit updates debit and increase account balance', () => {
+  it('updates debit and increase account balance by making a deposit', () => {
     myAccount.deposit(500);
     expect(myAccount.balance).toEqual(500);
     expect(myAccount.transactions[0]).toEqual({date: mockDate, credit: 500, debit: null, asOfBalance: 500,});
   });
 
-  it('multiple deposits updates debit and increase account balance', () => {
+  it('updates debit and increase account balance with multiple deposits', () => {
     myAccount.deposit(500);
     expect(myAccount.balance).toEqual(500);
     myAccount.deposit(1000);
@@ -44,17 +44,17 @@ describe("BankAccount", () => {
     const output = jest.spyOn(global.console, "log");
     myAccount.deposit("Hi");
     expect(myAccount.transactions.length).toEqual(0);
-    expect(output).not.toHaveBeenCalledWith("Invalid deposit amount. Must be a number.");
+    expect(output).not.toHaveBeenCalledWith("Invalid amount. Must be a number.");
   });
 
   it('throws an error when input is zero', () => {
     const output = jest.spyOn(global.console, "log");
     myAccount.deposit(0);
     expect(myAccount.transactions.length).toEqual(0);
-    expect(output).not.toHaveBeenCalledWith("Invalid deposit amount. Must be greater than 0.");
+    expect(output).not.toHaveBeenCalledWith("Invalid amount. Must be greater than 0.");
   });
 
-  it('withdrawal updates credit and decrease account balance', () => {
+  it('updates credit and decrease account balance upon withdrawal', () => {
     myAccount.deposit(2000);
     expect(myAccount.balance).toEqual(2000);
     myAccount.withdrawal(500);
@@ -66,14 +66,14 @@ describe("BankAccount", () => {
     const output = jest.spyOn(global.console, "log");
     myAccount.withdrawal("Hi");
     expect(myAccount.transactions.length).toEqual(0);
-    expect(output).not.toHaveBeenCalledWith("Invalid withdrawal amount. Must be a number.");
+    expect(output).not.toHaveBeenCalledWith("Invalid amount. Must be a number.");
   });
 
   it('throws an error when withdrawal amount is zero', () => {
     const output = jest.spyOn(global.console, "log");
     myAccount.withdrawal(0);
     expect(myAccount.transactions.length).toEqual(0);
-    expect(output).not.toHaveBeenCalledWith("Invalid withdrawal amount. Must be greater than 0.");
+    expect(output).not.toHaveBeenCalledWith("Invalid amount. Must be greater than 0.");
   });
 
   it('throws an error if balance is insufficient', () => {
@@ -85,7 +85,7 @@ describe("BankAccount", () => {
     expect(output).not.toHaveBeenCalledWith("Insufficient funds.");
   });
 
-  it('printBankStatement prints the list of transactions and current balance', () => {
+  it('prints the list of transactions and current balance', () => {
     myAccount.deposit(1000)
     expect(myAccount.balance).toEqual(1000);
     myAccount.deposit(2000)
@@ -106,7 +106,7 @@ describe("BankAccount", () => {
     output.mockRestore();
   })
 
-  it('prints "No transactions to display" for zero transactions', () => {
+  it('throws an error for zero transactions', () => {
     expect(myAccount.balance).toEqual(0);
     const output = jest.spyOn(global.console, "log");
 
