@@ -56,8 +56,8 @@ Jest testing framework
 
 File            | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
 ----------------|---------|----------|---------|---------|-------------------
-All files       |     100 |       90 |     100 |     100 |
- bankAccount.js |     100 |       90 |     100 |     100 | 29
+All files       |     100 |    92.85 |     100 |     100 |
+ bankAccount.js |     100 |    92.85 |     100 |     100 | 63
 
 ### Acceptance criteria
 
