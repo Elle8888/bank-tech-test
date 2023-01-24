@@ -10,12 +10,12 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-You will need to have Node.js and npm installed on your machine to run this project.
+You will need to have Node.js installed on your machine to run this project.
 
 ### Installing
 Clone the repository to your local machine
 
-```git clone https://github.com/yourusername/bank-statement.git```
+```git clone https://github.com/Elle8888/bank-tech-test.git```
 
 Navigate to the project directory and install the required packages
 
@@ -23,6 +23,8 @@ Navigate to the project directory and install the required packages
 npm install
 ```
 Running the Application
+
+
 To run the application, simply use node REPL
 
 ```
@@ -49,7 +51,7 @@ npm run test
 ```
 ### Built With
 
-Node.js - JavaScript runtime
+Node.js
 Jest testing framework
 
 ### Testing Coverage
@@ -59,6 +61,12 @@ File            | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
 All files       |     100 |    92.85 |     100 |     100 |
  bankAccount.js |     100 |    92.85 |     100 |     100 | 63
 
+### Requirements
+
+* You should be able to interact with your code via a REPL like IRB or Node.  (You don't need to implement a command line interface that takes input from STDIN.)
+* Deposits, withdrawal.
+* Account statement (date, amount, balance) printing.
+* Data can be kept in memory (it doesn't need to be stored to a database or anything).
 ### Acceptance criteria
 
 **Given** a client makes a deposit of 1000 on 10-01-2023
