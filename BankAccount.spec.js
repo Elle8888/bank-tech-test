@@ -36,8 +36,8 @@ describe("BankAccount", () => {
     myAccount.deposit(1000);
     expect(myAccount.balance).toEqual(1500);
     expect(myAccount.transactions.length).toEqual(2)
-    expect(myAccount.transactions[0]).toMatchObject({credit: 500, debit: null});
-    expect(myAccount.transactions[1]).toEqual({date: mockDate, credit: 1000, debit: null, asOfBalance: 1500});
+    expect(myAccount.transactions[1]).toMatchObject({credit: 500, debit: null});
+    expect(myAccount.transactions[0]).toEqual({date: mockDate, credit: 1000, debit: null, asOfBalance: 1500});
   });
 
   it('withdrawal updates credit and decrease account balance', () => {
@@ -45,7 +45,7 @@ describe("BankAccount", () => {
     expect(myAccount.balance).toEqual(2000);
     myAccount.withdrawal(500);
     expect(myAccount.balance).toEqual(1500);
-    expect(myAccount.transactions[1]).toEqual({date: mockDate, credit: null, debit: 500, asOfBalance: 1500});
+    expect(myAccount.transactions[0]).toEqual({date: mockDate, credit: null, debit: 500, asOfBalance: 1500});
   });
 
   it('rejects a withdrawal if balance is insufficient', () => {
