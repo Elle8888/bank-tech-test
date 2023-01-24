@@ -49,9 +49,12 @@ describe("BankAccount", () => {
   });
 
   it('rejects a withdrawal if balance is insufficient', () => {
+    myAccount.balance = 100;
+    const output = jest.spyOn(global.console, "log");
     myAccount.withdrawal(500);
-    expect(myAccount.balance).toEqual(0);
-    expect(myAccount.transactions.length).toEqual(0)
+    expect(myAccount.balance).toEqual(100);
+    expect(myAccount.transactions.length).toEqual(0);
+    expect(output).toHaveBeenCalledWith("Insufficient funds");
   });
 
   it('printBankStatement prints the list of transactions and current balance', () => {
@@ -73,7 +76,7 @@ describe("BankAccount", () => {
     output.mockRestore();
   })
 
-  it('printBankStatement should print empty statement for zero transactions', () => {
+  it('prints "No transactions to display" for zero transactions', () => {
     expect(myAccount.balance).toEqual(0);
     const output = jest.spyOn(global.console, "log");
 
@@ -81,6 +84,19 @@ describe("BankAccount", () => {
     expect(myAccount.transactions.length).toEqual(0);
     expect(output).toHaveBeenCalled();
     expect(output).toHaveBeenCalledWith("No transactions to display");
+    output.mockRestore();
+  })
+
+  it('prints statement excluding transaction for withdrawals exceeding the balance', () => {
+    myAccount.deposit(400)
+    myAccount.withdrawal(500)
+    expect(myAccount.balance).toEqual(400);
+    const output = jest.spyOn(global.console, "log");
+
+    myAccount.printBankStatements();
+    expect(myAccount.transactions.length).toEqual(1);
+    expect(output).toHaveBeenCalled();
+    expect(output).toHaveBeenCalledWith(`${mockDate} || 400 || 0 || 400`);
     output.mockRestore();
   })
 });
