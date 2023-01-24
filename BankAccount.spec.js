@@ -14,7 +14,7 @@ describe("BankAccount", () => {
 
   beforeEach(() => {
     // to mock new Date
-    mockDate = new Date('2022-02-26T20:42:16.652Z');
+    mockDate = new Date('26/02/2022');
     spy = jest
       .spyOn(global, "Date")
       .mockImplementation(() => mockDate);
