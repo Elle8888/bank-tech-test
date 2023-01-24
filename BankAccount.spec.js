@@ -1,4 +1,4 @@
-const BankAccount = require('./BankAccount.js');
+const BankAccount = require("./BankAccount.js");
 
 describe("BankAccount", () => {
   let myAccount;
@@ -80,7 +80,7 @@ describe("BankAccount", () => {
     myAccount.printBankStatements();
     expect(myAccount.transactions.length).toEqual(0);
     expect(output).toHaveBeenCalled();
-    expect(output).toHaveBeenCalledWith(`${null} || 0 || 0 || 0`);
+    expect(output).toHaveBeenCalledWith("No transactions to display");
     output.mockRestore();
   })
 });

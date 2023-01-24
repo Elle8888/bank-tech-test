@@ -6,6 +6,9 @@ class BankAccount {
 
   printBankStatements = () => {
     let currentBalance = balance;
+    if (this.transactions.length === 0) {
+      return console.log("No transactions to display");
+    }
     this.transactions.forEach((transaction) => {
       let credit = transaction.credit || 0;
       let debit = transaction.debit || 0;
