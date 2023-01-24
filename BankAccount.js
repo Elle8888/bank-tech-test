@@ -4,25 +4,25 @@ class BankAccount {
     this.transactions = [];
   }
 
-  printBankStatements = () => {
-    let currentBalance = balance;
+  printBankStatements() {
     if (this.transactions.length === 0) {
       return console.log("No transactions to display");
     }
+    let currentBalance = balance;
     this.transactions.forEach((transaction) => {
       let credit = transaction.credit || 0;
       let debit = transaction.debit || 0;
       currentBalance = currentBalance - debit + credit;
-      console.log(`${transaction.date} || ${credit} || ${debit} || ${currentBalance}`);
+      return console.log(`${transaction.date} || ${credit} || ${debit} || ${currentBalance}`);
       });
   }
 
-  deposit = (amount) => {
+  deposit(amount) {
     this.balance += amount;
     this.transactions.push({date: new Date(), credit: amount, debit: null});
   }
 
-  withdrawal = (amount) => {
+  withdrawal(amount) {
     if (amount > this.balance) {
       return console.log ("Insufficient funds");
     }
