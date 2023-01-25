@@ -106,6 +106,57 @@ describe("BankAccount", () => {
     output.mockRestore();
   })
 
+  it('prints multiple bank statements after a transaction', () => {
+    myAccount.balance = 1000
+    expect(myAccount.balance).toEqual(1000);
+    myAccount.deposit(2000)
+    expect(myAccount.balance).toEqual(3000);
+    myAccount.withdrawal(500)
+    expect(myAccount.balance).toEqual(2500);
+    const output = jest.spyOn(global.console, "log");
+
+    myAccount.printBankStatements();
+    expect(myAccount.transactions.length).toEqual(2);
+    expect(myAccount.transactions[0].asOfBalance).toEqual(2500);
+    expect(output).toHaveBeenCalled();
+    expect(output).toHaveBeenCalledWith(`${myAccount.transactions[1].date} || 0 || 500 || 2500`);
+    expect(output).toHaveBeenCalledWith(`${myAccount.transactions[0].date} || 2000 || 0 || 3000`);
+
+    myAccount.printBankStatements();
+    expect(myAccount.transactions.length).toEqual(2);
+    expect(myAccount.transactions[0].asOfBalance).toEqual(2500);
+    expect(output).toHaveBeenCalled();
+    expect(output).toHaveBeenCalledWith(`${myAccount.transactions[1].date} || 0 || 500 || 2500`);
+    expect(output).toHaveBeenCalledWith(`${myAccount.transactions[0].date} || 2000 || 0 || 3000`);
+    output.mockRestore();
+  })
+
+  it('prints updated bank statements after every transaction', () => {
+    myAccount.balance = 1000
+    expect(myAccount.balance).toEqual(1000);
+    myAccount.deposit(2000)
+    expect(myAccount.balance).toEqual(3000);
+    // myAccount.withdrawal(500)
+    // expect(myAccount.balance).toEqual(2500);
+    const output = jest.spyOn(global.console, "log");
+
+    myAccount.printBankStatements();
+    expect(myAccount.transactions.length).toEqual(1);
+    expect(myAccount.transactions[0].asOfBalance).toEqual(3000);
+    expect(output).toHaveBeenCalled();
+    expect(output).toHaveBeenCalledWith(`${myAccount.transactions[0].date} || 2000 || 0 || 3000`);
+
+    myAccount.withdrawal(500)
+    expect(myAccount.balance).toEqual(2500);
+    myAccount.printBankStatements();
+    expect(myAccount.transactions.length).toEqual(2);
+    expect(myAccount.transactions[0].asOfBalance).toEqual(2500);
+    expect(output).toHaveBeenCalled();
+    expect(output).toHaveBeenCalledWith(`${myAccount.transactions[1].date} || 0 || 500 || 2500`);
+    expect(output).toHaveBeenCalledWith(`${myAccount.transactions[0].date} || 2000 || 0 || 3000`);
+    output.mockRestore();
+  })
+
   it('throws an error for zero transactions', () => {
     expect(myAccount.balance).toEqual(0);
     const output = jest.spyOn(global.console, "log");
