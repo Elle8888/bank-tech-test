@@ -29,6 +29,8 @@ To run the application, simply use node REPL
 
 ```
 $ node
+> const BankAccount = require('./bankAccount.js')
+undefined
 > myAccount = new BankAccount()
 BankAccount { balance: 0, transactions: [] }
 > myAccount.deposit(1000)
