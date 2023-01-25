@@ -61,6 +61,15 @@ File            | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
 All files       |     100 |    92.85 |     100 |     100 |
  bankAccount.js |     100 |    92.85 |     100 |     100 | 63
 
+
+### Approach
+
+* Created functions based on the functionalities required.
+* Determined if there are any dependencies among these functions.
+* Created a class based on the dependencies and structure the code accordingly.
+* Followed the TDD, OOD, debugging approach.
+* Added edge cases and respective tests.
+* Refactored and added more tests.
 ### Requirements
 
 * You should be able to interact with your code via a REPL like IRB or Node.  (You don't need to implement a command line interface that takes input from STDIN.)
