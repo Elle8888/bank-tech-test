@@ -2,7 +2,7 @@ const BankTransactions = require("./bankTransactions.js");
 
 describe("BankTransactions", () => {
   let myAccount;
-  let mockDateObject;
+  let mockDate;
   let spy;
 
   beforeEach(() => {
