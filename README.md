@@ -29,22 +29,25 @@ To run the application, simply use node REPL
 
 ```
 $ node
-> const BankAccount = require('./bankAccount.js')
+> const BankStatement = require('./bankStatements.js')
 undefined
-> myAccount = new BankAccount()
-BankAccount { balance: 0, transactions: [] }
-> myAccount.deposit(1000)
+> myStatement = new BankStatement
+BankStatements {
+  bankTransactions: BankTransactions { balance: 0, transactions: [] }
+}
+> myStatement.bankTransactions.deposit(1000)
 undefined
-> myAccount.deposit(2000)
+> myStatement.bankTransactions.deposit(2000)
 undefined
-> myAccount.withdrawal(500)
+> myStatement.bankTransactions.withdrawal(500)
 undefined
-> myAccount.printBankStatements()
+> myStatement.printBankStatements()
 date || credit || debit || balance
-24/01/2023 || 0 || 500 || 2500
-24/01/2023 || 2000 || 0 || 3000
-24/01/2023 || 1000 || 0 || 1000
+26/01/2023 || 0 || 500 || 2500
+26/01/2023 || 2000 || 0 || 3000
+26/01/2023 || 1000 || 0 || 1000
 undefined
+>
 ```
 ### Running the tests
 To run the tests, you can use the command
@@ -68,7 +71,7 @@ All files       |     100 |    92.85 |     100 |     100 |
 
 * Created functions based on the functionalities required.
 * Determined if there are any dependencies among these functions.
-* Created a class based on the dependencies and structure the code accordingly.
+* Created classes following the single responsibility principle in OOP.
 * Followed the TDD, OOD, debugging approach.
 * Added edge cases and respective tests.
 * Refactored and added more tests.
